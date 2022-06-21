@@ -1,6 +1,7 @@
 package ru.makhach.studentsstorage.dao;
 
 import ru.makhach.studentsstorage.model.Student;
+import ru.makhach.studentsstorage.ui.type.DeleteStatus;
 
 import java.util.List;
 
@@ -9,9 +10,7 @@ public interface StudentDao {
 
     List<Student> getAllStudents();
 
-    Student getStudentById(Long id);
-
-    Student deleteStudentById(Long id);
+    DeleteStatus deleteStudentById(Long id);
 
     Student addStudent(Student student);
 }

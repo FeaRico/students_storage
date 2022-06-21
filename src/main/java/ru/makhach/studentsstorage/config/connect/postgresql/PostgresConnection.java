@@ -1,14 +1,11 @@
-package ru.makhach.studentsstorage.config;
+package ru.makhach.studentsstorage.config.connect.postgresql;
+
+import ru.makhach.studentsstorage.config.connect.DbConnection;
 
 import java.sql.Connection;
 import java.util.Optional;
 
-public abstract class PostgresConnection {
-    protected static final String URL = "jdbc:postgresql://localhost:5432/";
-    protected static final String DB_USER = "postgres";
-    protected static final String DB_PASS = "123456789";
-    protected static final String DB_DRIVER = "org.postgresql.Driver";
-
+public abstract class PostgresConnection extends DbConnection {
     public Optional<Connection> getConnection() {
         Connection connection = null;
         try {

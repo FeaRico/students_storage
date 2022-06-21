@@ -1,4 +1,6 @@
-package ru.makhach.studentsstorage.config;
+package ru.makhach.studentsstorage.config.connect.postgresql;
+
+import ru.makhach.studentsstorage.config.connect.DbConnection;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -19,7 +21,7 @@ public class MainPostgresConnection extends PostgresConnection {
     protected Connection getManagedConnection() {
         Connection connection = null;
         try {
-            connection = DriverManager.getConnection(URL, DB_USER, DB_PASS);
+            connection = DriverManager.getConnection(DbConnection.URL, DbConnection.DB_USER, DbConnection.DB_PASS);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }

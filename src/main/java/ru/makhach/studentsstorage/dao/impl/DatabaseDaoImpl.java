@@ -1,7 +1,7 @@
 package ru.makhach.studentsstorage.dao.impl;
 
-import ru.makhach.studentsstorage.config.MainPostgresConnection;
-import ru.makhach.studentsstorage.config.StudentsPostgresConnection;
+import ru.makhach.studentsstorage.config.connect.postgresql.MainPostgresConnection;
+import ru.makhach.studentsstorage.config.connect.postgresql.StudentsPostgresConnection;
 import ru.makhach.studentsstorage.dao.DatabaseDao;
 
 import java.io.IOException;
@@ -20,7 +20,7 @@ public class DatabaseDaoImpl implements DatabaseDao {
     private final StudentsPostgresConnection studentsConnection;
 
     private static final String EXISTS_DB = "select exists(SELECT datname FROM pg_catalog.pg_database WHERE lower(datname) = lower('" + StudentsPostgresConnection.DB_NAME + "'))";
-    private static final String CREATE_DB = "CREATE DATABASE students_abd";
+    private static final String CREATE_DB = "CREATE DATABASE " + StudentsPostgresConnection.DB_NAME;
 
     public DatabaseDaoImpl() {
         this.mainConnection = MainPostgresConnection.getInstance();

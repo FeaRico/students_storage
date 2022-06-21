@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class StudentTableModel extends AbstractTableModel {
     private static final int COLUMN_COUNT = 6;
-    private final List<Student> students;
+    private List<Student> students;
 
     public StudentTableModel() {
         this.students = new ArrayList<>();
@@ -31,6 +31,10 @@ public class StudentTableModel extends AbstractTableModel {
         if (student == null)
             return "";
         return Columns.values()[columnIndex].getValue(student);
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 
     public void addStudent(Student student) {

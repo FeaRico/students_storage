@@ -1,16 +1,19 @@
-package ru.makhach.studentsstorage.config;
+package ru.makhach.studentsstorage.config.connect.postgresql;
+
+import ru.makhach.studentsstorage.config.ApplicationProperties;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class StudentsPostgresConnection extends PostgresConnection {
-    public static final String DB_NAME = "students_abd";
+    public static final String DB_NAME;
 
     public final static StudentsPostgresConnection instance;
 
     static {
         instance = new StudentsPostgresConnection();
+        DB_NAME = ApplicationProperties.getProps().getProperty("db.name");
     }
 
     public static StudentsPostgresConnection getInstance() {
