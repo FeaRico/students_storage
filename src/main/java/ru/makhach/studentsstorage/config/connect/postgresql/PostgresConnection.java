@@ -5,6 +5,9 @@ import ru.makhach.studentsstorage.config.connect.DbConnection;
 import java.sql.Connection;
 import java.util.Optional;
 
+/**
+ * Абстрактный класс соединения с базой PostgreSQL
+ */
 public abstract class PostgresConnection extends DbConnection {
     public Optional<Connection> getConnection() {
         Connection connection = null;

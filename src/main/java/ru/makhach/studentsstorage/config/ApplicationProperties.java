@@ -9,6 +9,9 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.Properties;
 
+/**
+ * Класс для получения настроек
+ */
 public class ApplicationProperties {
 
     public static Properties getProps() {

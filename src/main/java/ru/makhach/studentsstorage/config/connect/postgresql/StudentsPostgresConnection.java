@@ -6,6 +6,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+/**
+ * Реализация соединения к серверу БД PostgreSQL с подключением к определенной БД
+ */
 public class StudentsPostgresConnection extends PostgresConnection {
     public static final String DB_NAME;
 

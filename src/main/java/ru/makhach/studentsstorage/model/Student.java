@@ -1,5 +1,10 @@
 package ru.makhach.studentsstorage.model;
 
+/**
+ * Модель студента.
+ * Класс является иммутабельным.
+ * Используется билдер для построения
+ */
 public class Student {
     private final Long id;
     private final String firstName;

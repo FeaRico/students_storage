@@ -7,6 +7,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Кастомная модель таблицы для хранения студентов.
+ */
 public class StudentTableModel extends AbstractTableModel {
     private static final int COLUMN_COUNT = 6;
     private List<Student> students;
@@ -33,14 +36,28 @@ public class StudentTableModel extends AbstractTableModel {
         return Columns.values()[columnIndex].getValue(student);
     }
 
+    /**
+     * Устанавливает список студентов модели
+     *
+     * @param students список студентов
+     */
     public void setStudents(List<Student> students) {
         this.students = students;
     }
 
+    /**
+     * Добавление студента в список
+     * @param student модель студента
+     */
     public void addStudent(Student student) {
         students.add(student);
     }
 
+    /**
+     * Удаление студента по идентификатору из модели
+     *
+     * @param id идентификатор студента
+     */
     public void removeStudentById(Long id) {
         List<Student> filteredStudents = students.stream().filter(student -> student.getId().equals(id)).collect(Collectors.toList());
         Student studentForDelete;

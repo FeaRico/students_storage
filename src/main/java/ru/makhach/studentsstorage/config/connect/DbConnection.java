@@ -2,9 +2,13 @@ package ru.makhach.studentsstorage.config.connect;
 
 import ru.makhach.studentsstorage.config.ApplicationProperties;
 
+import java.sql.Connection;
 import java.util.Optional;
 import java.util.Properties;
 
+/**
+ * Абстрактный класс для реализации соединения
+ */
 public abstract class DbConnection {
     protected static final String URL;
     protected static final String DB_USER;
@@ -20,5 +24,5 @@ public abstract class DbConnection {
         DB_DRIVER = properties.getProperty("db.driver");
     }
 
-    public abstract Optional<java.sql.Connection> getConnection();
+    public abstract Optional<Connection> getConnection();
 }
