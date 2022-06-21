@@ -67,7 +67,7 @@ public class DatabaseDaoImpl implements DatabaseDao {
     private String getTableQuery() {
         List<String> strings = null;
         try {
-            String resource = Objects.requireNonNull(getClass().getResource("/table.init")).getPath();
+            String resource = Objects.requireNonNull(getClass().getResource("/table.sql")).getPath();
             strings = Files.readAllLines(Paths.get(resource));
         } catch (IOException e) {
             e.printStackTrace();
