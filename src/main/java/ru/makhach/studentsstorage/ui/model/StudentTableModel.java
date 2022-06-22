@@ -43,14 +43,17 @@ public class StudentTableModel extends AbstractTableModel {
      */
     public void setStudents(List<Student> students) {
         this.students = students;
+        this.fireTableDataChanged();
     }
 
     /**
      * Добавление студента в список
+     *
      * @param student модель студента
      */
     public void addStudent(Student student) {
         students.add(student);
+        this.fireTableDataChanged();
     }
 
     /**
@@ -64,6 +67,7 @@ public class StudentTableModel extends AbstractTableModel {
         if (filteredStudents.size() == 1) {
             studentForDelete = filteredStudents.get(0);
             students.remove(studentForDelete);
+            this.fireTableDataChanged();
         }
     }
 

@@ -1,5 +1,6 @@
 package ru.makhach.studentsstorage.config.connect.postgresql;
 
+import ru.makhach.studentsstorage.Logger;
 import ru.makhach.studentsstorage.config.connect.DbConnection;
 
 import java.sql.Connection;
@@ -12,9 +13,14 @@ import java.sql.SQLException;
  */
 public class MainPostgresConnection extends PostgresConnection {
     private final static MainPostgresConnection instance;
+    private final Logger logger;
 
     static {
         instance = new MainPostgresConnection();
+    }
+
+    public MainPostgresConnection() {
+        this.logger = Logger.getInstance();
     }
 
     public static MainPostgresConnection getInstance() {
@@ -28,6 +34,7 @@ public class MainPostgresConnection extends PostgresConnection {
             connection = DriverManager.getConnection(DbConnection.URL, DbConnection.DB_USER, DbConnection.DB_PASS);
         } catch (SQLException throwables) {
             throwables.printStackTrace();
+            logger.showMessage(throwables.getLocalizedMessage());
         }
         return connection;
     }

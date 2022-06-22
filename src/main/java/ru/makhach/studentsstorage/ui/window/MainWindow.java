@@ -4,6 +4,7 @@
  */
 package ru.makhach.studentsstorage.ui.window;
 
+import ru.makhach.studentsstorage.Logger;
 import ru.makhach.studentsstorage.dao.DatabaseDao;
 import ru.makhach.studentsstorage.dao.StudentDao;
 import ru.makhach.studentsstorage.dao.impl.DatabaseDaoImpl;
@@ -21,6 +22,7 @@ import java.util.List;
  */
 public class MainWindow extends javax.swing.JFrame {
     private StudentTableModel studentTableModel;
+    private final Logger logger;
     private final DatabaseDao databaseDao;
     private final StudentDao studentDao;
 
@@ -28,6 +30,7 @@ public class MainWindow extends javax.swing.JFrame {
      * Creates new form NewJFrame
      */
     public MainWindow() {
+        this.logger = Logger.init(this);
         this.databaseDao = new DatabaseDaoImpl();
         this.studentDao = new StudentDaoImpl();
         initComponents();
@@ -43,7 +46,6 @@ public class MainWindow extends javax.swing.JFrame {
     private void loadData() {
         List<Student> students = studentDao.getAllStudents();
         studentTableModel.setStudents(students);
-        studentTableModel.fireTableDataChanged();
     }
 
     /**
@@ -279,7 +281,6 @@ public class MainWindow extends javax.swing.JFrame {
 
         Student createdStudent = studentDao.addStudent(student);
         studentTableModel.addStudent(createdStudent);
-        studentTableModel.fireTableDataChanged();
         addStudentDialog.dispose();
     }//GEN-LAST:event_addDialogButtonActionPerformed
 
@@ -293,7 +294,6 @@ public class MainWindow extends javax.swing.JFrame {
                 case SUCCESS: {
                     showMessage("Студент успешно удалён!");
                     studentTableModel.removeStudentById(Long.valueOf(studentId));
-                    studentTableModel.fireTableDataChanged();
                     break;
                 }
                 case NOT_FOUND_WITH_ID: {
