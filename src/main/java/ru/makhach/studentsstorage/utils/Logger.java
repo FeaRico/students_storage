@@ -1,7 +1,10 @@
-package ru.makhach.studentsstorage;
+package ru.makhach.studentsstorage.utils;
 
 import javax.swing.*;
 
+/**
+ * Логгер, представляющий из себя очень простую реализацию уведомлений
+ */
 public class Logger {
     private static Logger instance;
     private final JFrame parent;

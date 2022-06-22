@@ -1,6 +1,6 @@
 package ru.makhach.studentsstorage.config.connect.postgresql;
 
-import ru.makhach.studentsstorage.Logger;
+import ru.makhach.studentsstorage.utils.Logger;
 import ru.makhach.studentsstorage.config.connect.DbConnection;
 
 import java.sql.Connection;

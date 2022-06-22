@@ -4,7 +4,6 @@
  */
 package ru.makhach.studentsstorage.ui.window;
 
-import ru.makhach.studentsstorage.Logger;
 import ru.makhach.studentsstorage.dao.DatabaseDao;
 import ru.makhach.studentsstorage.dao.StudentDao;
 import ru.makhach.studentsstorage.dao.impl.DatabaseDaoImpl;
@@ -12,8 +11,8 @@ import ru.makhach.studentsstorage.dao.impl.StudentDaoImpl;
 import ru.makhach.studentsstorage.model.Student;
 import ru.makhach.studentsstorage.ui.model.StudentTableModel;
 import ru.makhach.studentsstorage.ui.type.DeleteStatus;
+import ru.makhach.studentsstorage.utils.Logger;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.List;
 
@@ -287,21 +286,21 @@ public class MainWindow extends javax.swing.JFrame {
     private void deleteButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButtonActionPerformed
         String studentId = idToDeleteField.getText();
         if ("".equals(studentId))
-            showMessage("Необходимо указать идентификатор для удаления!");
+            logger.showMessage("Необходимо указать идентификатор для удаления!");
         else {
             DeleteStatus status = studentDao.deleteStudentById(Long.valueOf(studentId));
             switch (status) {
                 case SUCCESS: {
-                    showMessage("Студент успешно удалён!");
+                    logger.showMessage("Студент успешно удалён!");
                     studentTableModel.removeStudentById(Long.valueOf(studentId));
                     break;
                 }
                 case NOT_FOUND_WITH_ID: {
-                    showMessage("Студента с таким идентификатором нет!");
+                    logger.showMessage("Студента с таким идентификатором нет!");
                     break;
                 }
                 case CONNECTION_ERROR: {
-                    showMessage("Проверьте соединение с базой данных!");
+                    logger.showMessage("Проверьте соединение с базой данных!");
                     break;
                 }
             }
@@ -316,10 +315,6 @@ public class MainWindow extends javax.swing.JFrame {
         centeredWindow(addStudentDialog);
         addStudentDialog.setVisible(true);
     }//GEN-LAST:event_addButtonActionPerformed
-
-    private void showMessage(String msg) {
-        JOptionPane.showMessageDialog(this, msg);
-    }
 
     /**
      * @param args the command line arguments
